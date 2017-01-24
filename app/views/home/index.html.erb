@@ -1,0 +1,12 @@
+<form method='get' action='/'>
+  <input type="text" name="expression" value="<%= params[:expression] %>" />
+  <input type="submit" value="Submit">
+
+  <% if @result.present? %>
+    <% if BasicCalculator.is_number?(@result) && !@result.infinite? && !@result.nan? %>
+      <p>Result: <b><%= ('%g' % ('%.2f' % @result)) %></b></p>
+    <% else %>
+      <p>Result: <b>Invalid Expression</b></p>
+    <% end %>
+  <% end %>
+</form>
